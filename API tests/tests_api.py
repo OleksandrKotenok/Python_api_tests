@@ -40,3 +40,7 @@ def test_get_booking(booking_id):
     assert response.status_code == 200
     assert response.json()["firstname"] == "QA A"
 
+def test_get_not_existing_booking():
+    response = requests.get("https://restful-booker.herokuapp.com/booking/999999999")
+    print(response)
+    assert response.status_code == 404
