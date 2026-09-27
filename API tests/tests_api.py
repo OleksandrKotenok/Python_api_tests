@@ -39,3 +39,4 @@ def test_get_booking(booking_id):
 
     assert response.status_code == 200
     assert response.json()["firstname"] == "QA A"
+
