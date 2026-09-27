@@ -1,5 +1,7 @@
 import pytest
 import requests
+from pygments.lexers import data
+
 
 def test_get():
     response = requests.get("https://jsonplaceholder.typicode.com/posts/1/comments")
@@ -44,3 +46,11 @@ def test_get_not_existing_booking():
     response = requests.get("https://restful-booker.herokuapp.com/booking/999999999")
     print(response)
     assert response.status_code == 404
+
+def test_get_booking_three_asserts():
+    response = requests.get("https://restful-booker.herokuapp.com/booking")
+    print(response)
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) > 0
