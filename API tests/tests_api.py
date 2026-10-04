@@ -1,6 +1,7 @@
 import pytest
 import requests
 from pygments.lexers import data
+from urllib3.contrib.emscripten import response
 
 
 def test_get():
@@ -54,3 +55,9 @@ def test_get_booking_three_asserts():
     data = response.json()
     assert isinstance(data, list)
     assert len(data) > 0
+
+def test_get_booking_ct():
+    response = requests.get("https://restful-booker.herokuapp.com/booking")
+    assert response.status_code == 200
+    content_type = response.headers["Content-Type"]
+    assert "application/json" in content_type
