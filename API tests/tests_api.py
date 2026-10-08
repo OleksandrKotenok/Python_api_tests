@@ -61,3 +61,10 @@ def test_get_booking_ct():
     assert response.status_code == 200
     content_type = response.headers["Content-Type"]
     assert "application/json" in content_type
+
+def test_get_booking_dict():
+    response = requests.get("https://restful-booker.herokuapp.com/booking/1")
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, dict)
+    assert "firstname" in data
