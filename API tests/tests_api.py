@@ -1,7 +1,5 @@
 import pytest
 import requests
-from pygments.lexers import data
-from urllib3.contrib.emscripten import response
 
 
 def test_get():
